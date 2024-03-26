@@ -1,1 +1,15 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+vulnerability in the insecure version:
+1. session hijacking
+2. cross-site request forgery
+
+how the secure version prevents the vulnerability:
+1. httpOnly: true. the secure version sets 'httpOnly' to true, preventing client-side scripts
+from accessing the cookie. 
+2. sameSite: true. the secure version sets 'sameSite' to true, this attribute is set to ensure that
+the cookie is sent only requests originating from the same domain as the cookie. This mitigates cross-site 
+request forgery (CSRF) attacks by preventing the browser from sending the cookie along with requests 
+initiated by third-party websites.
+3. 'process.argv[2]'. the secure version obtains the session secret from a command-line argument instead of a hard-coded string.
+this approach means that the secret can be kept out of the codebase and can be changed easily without modifying the source code.
+using a dynamic and strong secret that is difficult to guess is critical for the security of session tokens, as it protects against session hijacking attacks.
