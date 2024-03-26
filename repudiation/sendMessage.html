@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Request Form</title>
+</head>
+<body>
+    <h2>Send a POST Request</h2>
+    <form id="postForm" action="/send-message" method="post">
+        <label for="user">User:</label>
+        <input type="text" id="user" name="user" required><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        
+        <button type="submit">Send Message</button>
+    </form>
+</body>
+</html>

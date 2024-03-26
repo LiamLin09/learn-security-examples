@@ -1,0 +1,2 @@
+- Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
+- What additional security mechanisms can you incorporate to prevent such attacks?
