@@ -1,0 +1,21 @@
+1. Briefly explain the vulnerability and why the secure version prevents the
+vulnerability.
+
+the vulnerability arises from how user input is handled during registration.
+the user's name is directly taken from the request body and stored in the session
+without any form of sanitization or validation.
+This can lead to several security issues, such as Cross-Site Scripting (XSS) attacks, 
+where an attacker could inject malicious scripts into the system by simply entering script 
+content as their name. These scripts could then be executed in the context of other users' browsers, 
+leading to unauthorized access to user data or session hijacking.
+
+the secure version prevents the vulnerability by introducing a function 'escapeHTML(input)' that 
+sanitizes the user input before it is stored in the session.
+this function replaces special characters in the input with their corresponding HTML entities,
+which neutralies potentially malicious scripts. by sanitizing the user input, the application
+prevents the injection of executable scripts into the web pages, effectively mitigating the risk
+of XSS attacks and other input-based vulnerability.
+
+2. Which CIA property does tampering violate?
+
+tampering with data violates the integrity aspect of the CIA triad.

@@ -1,3 +1,31 @@
-Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-Which CIA property does tampering violate?
-What additional security mechanisms can you incorporate?
+1. Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The vulnerability present in the insecure version arises from the application's handling of user input 
+without proper validation or sanitization before using it in a database query (insecure.js). 
+This vulnerability is known as NoSQL injection, which allows attackers to manipulate queries and potentially 
+access unauthorized data by injecting malicious code into inputs that are directly used in database operations. 
+In this case, the application directly uses user-provided values in the database query to find a user by their username, 
+without checking if the input is malicious. This could let an attacker craft special input that could manipulate the query, 
+leading to unauthorized access to user information or other malicious outcomes.
+
+The secure version (secure.js) prevents this vulnerability by adding input validation and sanitization steps 
+before the database query is executed. It checks if the username is a string and removes non-alphanumeric characters 
+from the input using a regular expression. This sanitization process ensures that any malicious characters that could 
+be used to manipulate the database query are stripped out, effectively preventing NoSQL injection attacks. 
+By validating and sanitizing user input, the application significantly reduces the risk of unauthorized access 
+or manipulation of the database.
+
+2. Which CIA property does tampering violate?
+
+Integrity
+
+3. What additional security mechanisms can you incorporate?
+
+Least Privilege Access: Ensure that the database user the application connects with has the least privileges 
+necessary to perform its functions. This minimizes the potential impact of a successful injection attack.
+
+Regular Security Audits and Code Reviews: Conducting regular security audits and code reviews can help identify 
+and mitigate vulnerabilities like injection flaws before they can be exploited.
+
+Security Training for Developers: Providing developers with training on secure coding practices and awareness 
+of common vulnerabilities like injection attacks can help prevent such issues from being introduced into the code.
