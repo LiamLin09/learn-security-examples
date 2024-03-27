@@ -1,2 +1,14 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+vulnerability occurs in the route handler for '/userinfo', where the application uses user-provided input
+directly in a database query without any validation or sanitization.
+an attacker could exploit this vulnerability by providing specially crafted input in the id parameter that
+could manipulate the query to return unauthorized data or perform other malicious actions within the databse context.
+
+the secure version attempts to mitigate this vulnerability by wrapping the database query within a 'try-catch' block.
+using 'try-catch' block can handle exceptions that might occur during the execution of the query.
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+1. Input Validation: Ensure all user input is validated against a strict set of rules before it is used in database queries.
+2. Sanitization: Sanitize inputs to remove or encode potentially dangerous characters.
