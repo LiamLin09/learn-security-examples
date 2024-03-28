@@ -1,2 +1,24 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
+
+the vulnerability stems from a lack of proper auditing and authentication mechanisms.
+specifically, the application does not:
+1. keep a record of who sends message or accesses them.
+2. the routes '/send-message' and '/get-message' do not require any form of user authentication. this means anyone can send message
+or retrieve them without having to identify themselves.
+
+the secure version introduces several improvements to prevent repudiation:
+1. It logs every request to the server, including the IP address of the requester, the type of request, and the specific action taken 
+(e.g., sending a message).
+2. Although the code snippet simulates authentication (const isAuthenticated = true;), 
+it introduces a placeholder for actual authentication logic. The intent is to ensure 
+that only authenticated users can send or retrieve messages. Authentication is a critical component for 
+establishing the identity of users and linking actions to them, thereby significantly reducing the risk of repudiation.
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+1.Secure Logging: Ensure that logs are tamper-evident and stored securely.
+2. Regular Audits: Perform regular security audits of the system to identify and rectify potential vulnerabilities 
+that could be exploited for repudiation or other attacks.
+
+
+
