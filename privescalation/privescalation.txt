@@ -1,0 +1,18 @@
+- Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+the vulnerability arises from the lack of proper authentication and authorization mechanisms.
+it uses a simplistic method for authorization by checking a user's role directly from the request body 
+without verifying if the user is genuinely who they claim to be.
+
+the secure version introduces a session-based authentication mechanism, which significantly enhances security.
+it uses the 'express-session' middleware to manage session states on the server side.
+this means that to perform sensitive operations, the user must be logged in, and their session must indicate that
+they have the required permissions.
+
+- What additional security mechanisms can you incorporate to prevent such attacks?
+
+1. HTTPS: Use HTTPS to encrypt data in transit between the client and server, preventing attackers from eavesdropping
+or tampering with the data (e.g., session hijacking).
+2. Rate Limiting: Apply rate limiting to your API endpoints to mitigate brute-force attacks.
+
+
